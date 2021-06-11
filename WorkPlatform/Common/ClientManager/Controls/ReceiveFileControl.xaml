@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="ClientManager.Controls.ReceiveFileControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Width="364"
+             Height="134"
+             mc:Ignorable="d">
+    <Grid>
+        <ProgressBar Width="272"
+                     Height="21"
+                     Margin="78,31,0,0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Value="{Binding Schedule}" />
+        <Button Width="75"
+                Margin="275,107,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="cancel_Click"
+                Content="拒绝" />
+        <Image Width="50"
+               Height="54"
+               Margin="10,31,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Source="{Binding Icon}" />
+        <Label Margin="78,0,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="{Binding FileName}" />
+
+        <Label Width="88"
+               Height="37"
+               Margin="243,75,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="{Binding Sendlength}" />
+        <Label Width="88"
+               Height="28"
+               Margin="65,77,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="{Binding Rate}" />
+
+        <Button Width="75"
+                Margin="81,107,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="save_Click"
+                Content="接收" />
+        <Button Width="75"
+                Margin="168,107,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="saveas_Click"
+                Content="另存为..." />
+    </Grid>
+</UserControl>
