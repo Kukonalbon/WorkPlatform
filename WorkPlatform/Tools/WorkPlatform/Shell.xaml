@@ -3,13 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cal="http://www.codeplex.com/CompositeWPF"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:manager="clr-namespace:WorkCommon.Manager;assembly=WorkCommon"
+        xmlns:logincontrol="clr-namespace:Modules.LoginModule;assembly=Modules.LoginModule"
+        xmlns:manager="clr-namespace:PlatformCommon.Manager;assembly=PlatformCommon"
         Title="Shell"
         Width="1000"
         Height="700">
-    <!--  xmlns:logincontrol="clr-namespace:Modules.LoginPlugin;assembly=Modules.LoginPlugin"  -->
     <Grid>
-
 
         <Grid Name="gridMenu" Background="#FF595959">
             <Grid.RowDefinitions>
@@ -30,7 +29,7 @@
         </Grid>
 
 
-        <!--  <logincontrol:LoginControl />  -->
+        <logincontrol:LoginControl Visibility="Collapsed" />
 
     </Grid>
 </Window>

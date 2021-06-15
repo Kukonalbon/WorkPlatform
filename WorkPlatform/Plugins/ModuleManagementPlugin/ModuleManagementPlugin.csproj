@@ -104,17 +104,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Common\CommonHelper\CommonHelper.csproj">
       <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
       <Name>CommonHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\WorkCommon\WorkCommon.csproj">
-      <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
-      <Name>WorkCommon</Name>
+    <ProjectReference Include="..\..\Common\ControlLib\ControlLib.csproj">
+      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
+      <Name>ControlLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\icon1.png" />
+    <ProjectReference Include="..\..\Common\PlatformCommon\PlatformCommon.csproj">
+      <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
+      <Name>PlatformCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

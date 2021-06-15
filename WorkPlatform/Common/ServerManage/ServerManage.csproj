@@ -70,7 +70,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
     <Compile Include="PersonManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -130,9 +129,9 @@
       <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
       <Name>CommonHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkCommon\WorkCommon.csproj">
+    <ProjectReference Include="..\PlatformCommon\PlatformCommon.csproj">
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
-      <Name>WorkCommon</Name>
+      <Name>PlatformCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.BusinessFacade;
 using ServerManage;
-using WorkCommon.Message;
+using PlatformCommon.Message;
 
 namespace PrismServer
 {

@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientManager;
-using WorkCommon.Message;
-using WorkCommon.Plugin;
+using PlatformCommon.Message;
+using PlatformCommon.Plugin;
 using Project.Entities;
-using WorkCommon.Manager;
-using WorkCommon.Events;
+using PlatformCommon.Manager;
+using PlatformCommon.Events;
 
 namespace Modules.ChatModule
 {
@@ -127,44 +127,41 @@ namespace Modules.ChatModule
 
         void client_OnMessageReceive(object sender, MessageDataArgs e)
         {
-            this.Dispatcher.BeginInvoke((Action)(() =>
-              {
-                  switch (e.Data.Type)
-                  {
-                      case MessageType.GetAllUsers:
-                          {
-                              var persons = e.Data.Value as List<PersonData>;
-                              if (persons != null)
-                              {
-                                  InitViewPerson(persons);
-                              }
-                              break;
-                          }
+            switch (e.Data.Type)
+            {
+                case MessageType.GetAllUsers:
+                    {
+                        var persons = e.Data.Value as List<PersonData>;
+                        if (persons != null)
+                        {
+                            InitViewPerson(persons);
+                        }
+                        break;
+                    }
 
-                      case MessageType.Login:
-                          {
-                              WorkClient.Instance.GetAllUsers();
-                              break;
-                          }
+                case MessageType.Login:
+                    {
+                        WorkClient.Instance.GetAllUsers();
+                        break;
+                    }
 
-                      case MessageType.Logout:
-                          {
-                              WorkClient.Instance.GetAllUsers();
-                              break;
-                          }
+                case MessageType.Logout:
+                    {
+                        WorkClient.Instance.GetAllUsers();
+                        break;
+                    }
 
-                      case MessageType.Message:
-                          {
-                              var chatcontrol = ShowClient(e.Data.SentUser);
-                              if (chatcontrol != null)
-                              {
-                                  chatcontrol.AddMessage(e.Data);
-                              }
+                case MessageType.Message:
+                    {
+                        var chatcontrol = ShowClient(e.Data.SentUser);
+                        if (chatcontrol != null)
+                        {
+                            chatcontrol.AddMessage(e.Data);
+                        }
 
-                              break;
-                          }
-                  }
-              }));
+                        break;
+                    }
+            }
         }
 
         void MainControl_Loaded(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using CommonHelper.Helpers;
-using WorkCommon.Manager;
+using PlatformCommon.Manager;
 
 namespace WorkPlatform
 {

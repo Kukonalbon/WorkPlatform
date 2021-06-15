@@ -5,7 +5,7 @@ using System.Text;
 using Sodao.FastSocket.Server.Command;
 using Sodao.FastSocket.SocketBase;
 using Jisons;
-using WorkCommon.Message;
+using PlatformCommon.Message;
 using ServerManage;
 using Project.Entities;
 

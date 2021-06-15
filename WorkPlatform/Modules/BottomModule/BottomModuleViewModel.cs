@@ -4,10 +4,10 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.Prism.Events;
-using WorkCommon.ViewModel;
-using WorkCommon.Events;
+using PlatformCommon.ViewModel;
+using PlatformCommon.Events;
 using System.Collections.ObjectModel;
-using WorkCommon.Plugin;
+using PlatformCommon.Plugin;
 
 namespace Modules.BottomModule
 {

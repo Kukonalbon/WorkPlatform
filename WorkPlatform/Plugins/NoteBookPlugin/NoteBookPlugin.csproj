@@ -58,12 +58,6 @@
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\..\..\..\ji\PrismWork\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Interactivity">
-      <HintPath>..\..\..\..\..\ji\PrismWork\PrismLib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
-      <HintPath>..\..\..\..\..\ji\PrismWork\PrismLib\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\..\..\..\ji\PrismWork\PrismLib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -116,24 +110,24 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\CommonHelper\CommonHelper.csproj">
-      <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
-      <Name>CommonHelper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\WorkCommon\WorkCommon.csproj">
-      <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
-      <Name>WorkCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
-      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
-      <Name>ControlLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\5.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\memo_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonHelper\CommonHelper.csproj">
+      <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
+      <Name>CommonHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\ControlLib\ControlLib.csproj">
+      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
+      <Name>ControlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\PlatformCommon\PlatformCommon.csproj">
+      <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
+      <Name>PlatformCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

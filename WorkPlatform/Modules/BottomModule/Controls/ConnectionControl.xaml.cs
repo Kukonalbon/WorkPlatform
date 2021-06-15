@@ -12,8 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Modules.ChatModule;
-using WorkCommon.Events;
-using WorkCommon.Manager;
+using PlatformCommon.Events;
+using PlatformCommon.Manager;
 
 namespace Modules.BottomModule
 {

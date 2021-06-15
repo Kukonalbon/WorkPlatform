@@ -11,7 +11,7 @@ using UdpSendFiles;
 using System.Windows;
 using System.IO;
 using ClientManager.Controls;
-using WorkCommon.Message;
+using PlatformCommon.Message;
 
 namespace ClientManager
 {
@@ -46,6 +46,8 @@ namespace ClientManager
 
         public PersonData Person { get; private set; }
 
+        private ClientInfo clientInfo = null;
+
         protected WorkClient()
             : base(8192, 8192, 3000, 3000)
         {
@@ -54,23 +56,30 @@ namespace ClientManager
 
         public bool RegisterServerNode(string ip = "127.0.0.1", int port = 12000)
         {
+            this.UnRegisterServerNode(this.Guid);
             return this.RegisterServerNode(this.Guid, new System.Net.IPEndPoint(System.Net.IPAddress.Parse(ip), port));
         }
 
         protected void ReceivedMessageHandle(EventHandler<MessageDataArgs> e, MessageData msd)
         {
-            if (e != null)
-            {
-                e(this, new MessageDataArgs() { Data = msd });
-            }
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                    {
+                        if (e != null)
+                        {
+                            e(this, new MessageDataArgs() { Data = msd });
+                        }
+                    }));
         }
 
         internal void FileActionHandle(FileActionArgs args)
         {
-            if (this.OnFileAction != null)
-            {
-                this.OnFileAction(this, args);
-            }
+            Application.Current.Dispatcher.BeginInvoke((Action)(() =>
+                     {
+                         if (this.OnFileAction != null)
+                         {
+                             this.OnFileAction(this, args);
+                         }
+                     }));
         }
 
         #region 重载的方法
@@ -84,7 +93,6 @@ namespace ClientManager
         {
             base.OnResponse(connection, response);
 
-            //  var msga = response.Buffer.DeSerializeBinary<PersonData>(); 
             var msg = response.Buffer.DeSerializeBinary<MessageData>();
             if (msg != null)
             {
@@ -103,11 +111,21 @@ namespace ClientManager
         protected override void OnConnected(IConnection connection)
         {
             base.OnConnected(connection);
+
+            var md = new MessageData();
+
             IConnection = connection;
             if (IsLogin)
             {
-                Login(user.Name, user.PassWord);
+                Login();
+                md.Type = MessageType.ReConnetServer;
             }
+            else
+            {
+                md.Type = MessageType.ConnetServer;
+            }
+
+            ReceivedMessageHandle(this.OnMessageReceive, md);
         }
 
         protected override void Send(Request<Sodao.FastSocket.Client.Response.AsyncBinaryResponse> request)
@@ -138,12 +156,11 @@ namespace ClientManager
                         {
                             if (data.SentUser != null && data.SentUser.KeyId == this.Person.KeyId)
                             {
-                                Console.WriteLine("self login");
+                                // Console.WriteLine("self login");
                             }
                             else
                             {
                                 ReceivedMessageHandle(this.OnMessageReceive, data);
-                                //anyone else login
                             }
 
                             break;
@@ -154,12 +171,12 @@ namespace ClientManager
                             if (data.SentUser != null && data.SentUser.KeyId == this.Person.KeyId)
                             {
                                 Logout();
-                                Console.WriteLine("被挤掉");
+                                data.Value = this.clientInfo;
+                                ReceivedMessageHandle(this.OnMessageReceive, data);
                             }
                             else
                             {
                                 ReceivedMessageHandle(this.OnMessageReceive, data);
-                                //anyone else logout 
                             }
 
                             break;
@@ -221,27 +238,30 @@ namespace ClientManager
             }
         }
 
+
         #region 命令处理
-        ClientInfo user = null;
+
         public void Login(string name, string password)
         {
-            user = new ClientInfo();
-            user.Name = name;
-            user.PassWord = password;
+            clientInfo = new ClientInfo();
+            clientInfo.Name = name;
+            clientInfo.PassWord = password;
 
-            if (this.IConnection == null)
+            Login();
+        }
+
+        public void Login()
+        {
+            if (this.IConnection == null || clientInfo == null)
             {
                 return;
             }
 
             IsLogin = true;
 
-
-
-            user.IP = this.IConnection.LocalEndPoint.Address.ToString();
-            user.Port = this.IConnection.LocalEndPoint.Port;
-
-            this.Send(CommandType.Login, user.SerializeBinary(), res => res.Buffer.DeSerializeBinary<PersonData>()).ContinueWith(c =>
+            clientInfo.IP = this.IConnection.LocalEndPoint.Address.ToString();
+            clientInfo.Port = this.IConnection.LocalEndPoint.Port;
+            this.Send(CommandType.Login, clientInfo.SerializeBinary(), res => res.Buffer.DeSerializeBinary<PersonData>()).ContinueWith(c =>
             {
                 Person = c.Result;
                 if (c.IsFaulted || Person == null)

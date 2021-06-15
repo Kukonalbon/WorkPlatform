@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using CommonHelper;
 using Jisons;
 using UdpSendFiles;
-using WorkCommon.Message;
+using PlatformCommon.Message;
 
 namespace ClientManager.Controls
 {

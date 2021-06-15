@@ -100,16 +100,16 @@ namespace Jisons
         /// <typeparam name="S"> 读取的数据类型 </typeparam>
         /// <param name="fileInfo"> 包含数据的文件 FileInfo 信息 </param>
         /// <returns> 返回为默认值的时候读取失败 </returns>
-        public static S ReadDataFromXml<S>(this FileInfo fileInfo) where S : struct
+        public static S ReadStructFromXml<S>(this FileInfo fileInfo) where S : struct
         {
-            return ReadDataFromXml<S>(fileInfo.FullName);
+            return ReadStructFromXml<S>(fileInfo.FullName);
         }
 
         /// <summary> 从XML读取数据 </summary>
         /// <typeparam name="S"> 读取的数据类型 </typeparam>
         /// <param name="fileInfo"> 包含数据的文件 FileInfo 信息 </param>
         /// <returns> 返回为默认值的时候读取失败 </returns>
-        public static S ReadDataFromXml<S>(this string FullPath) where S : struct
+        public static S ReadStructFromXml<S>(this string FullPath) where S : struct
         {
             var data = XmlAction.Read(FullPath, typeof(S));
             return data != null ? (S)data : default(S);
@@ -119,7 +119,7 @@ namespace Jisons
         /// <typeparam name="S"> 读取的数据类型 </typeparam> 
         /// <param name="FullPath"> 读取的路径 </param>
         /// <returns> 返回为默认值的时候读取失败 </returns>
-        public static S ReadDataFromXml<S>(this Stream stream) where S : struct
+        public static S ReadStructFromXml<S>(this Stream stream) where S : struct
         {
             var data = XmlAction.Read(stream, typeof(S));
             return data != null ? (S)data : default(S);

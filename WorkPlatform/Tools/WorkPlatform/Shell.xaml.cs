@@ -11,14 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WorkCommon.Manager;
-using WorkCommon.Manager.LayoutMgr;
-using WorkCommon.Updata;
+using PlatformCommon.Manager;
+using PlatformCommon.Manager.LayoutMgr;
+using PlatformCommon.Updata;
 using Jisons;
 using System.Windows.Markup;
 using System.IO;
 using System.Xml;
 using Project.BusinessFacade;
+using ClientManager;
 
 namespace WorkPlatform
 {
@@ -39,13 +40,14 @@ namespace WorkPlatform
 
             this.SizeChanged += Shell_SizeChanged;
 
-        
+            //string ip = "10.237.3.255";
+            //var b = WorkClient.Instance.RegisterServerNode(ip, 12000);
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             base.OnClosing(e);
-            GlobalEvent.Instance.RaiseProjectChange(new WorkCommon.Events.ProjectEventArgs() { Action = WorkCommon.Events.ProjectAction.Close });
+            GlobalEvent.Instance.RaiseProjectChange(new PlatformCommon.Events.ProjectEventArgs() { Action = PlatformCommon.Events.ProjectAction.Close });
         }
 
         void Shell_SizeChanged(object sender, SizeChangedEventArgs e)

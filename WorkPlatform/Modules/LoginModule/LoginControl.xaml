@@ -1033,7 +1033,8 @@
                  Style="{DynamicResource TextBoxStyle1}"
                  Text="密码"
                  TextWrapping="Wrap" />
-        <Button Grid.Column="1"
+        <Button x:Name="loginbutton"
+                Grid.Column="1"
                 Width="100"
                 Height="40"
                 Margin="304,375,0,0"
@@ -1139,7 +1140,7 @@
                Content="端口 " />
         <TextBox x:Name="port"
                  Grid.Column="1"
-                 Width="120"
+                 Width="52"
                  Height="23"
                  Margin="262,344,0,0"
                  HorizontalAlignment="Left"
@@ -1147,5 +1148,13 @@
                  Style="{x:Null}"
                  Text="12000"
                  TextWrapping="Wrap" />
+        <Button Grid.Column="1"
+                Width="47"
+                Margin="329,347,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="saveServer_Click"
+                Content="修改"
+                Style="{x:Null}" />
     </Grid>
 </UserControl>

@@ -11,9 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WorkCommon.Events;
-using WorkCommon.Manager;
-using WorkCommon.Plugin;
+using PlatformCommon.Events;
+using PlatformCommon.Manager;
+using PlatformCommon.Plugin;
 
 namespace Modules.MainModule
 {

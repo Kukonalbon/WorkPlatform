@@ -12,13 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WorkCommon.Behaviors;
-using WorkCommon.Manager;
+using PlatformCommon.Behaviors;
+using PlatformCommon.Manager;
 using Jisons;
-using WorkCommon.Plugin;
+using PlatformCommon.Plugin;
 using ControlLib;
-using WorkCommon.Updata;
-using WorkCommon.Events;
+using PlatformCommon.Updata;
+using PlatformCommon.Events;
 
 namespace Modules.MainModule
 {
@@ -62,9 +62,12 @@ namespace Modules.MainModule
             actionview.Height = itemscontrol.ActualHeight - 10;
             actionview.Width = itemscontrol.ActualWidth - 10;
 
-            foreach (var iplugin in this.ViewModel.PluginObjects)
+            if (ViewModel.PluginObjects != null)
             {
-                actionview.AddDragControl(iplugin);
+                foreach (var iplugin in this.ViewModel.PluginObjects)
+                {
+                    actionview.AddDragControl(iplugin);
+                }
             }
 
             this.actionview.AddControlEvent += actionview_AddControlEvent;
@@ -166,7 +169,7 @@ namespace Modules.MainModule
             switch (args.Action)
             {
 
-                case WorkCommon.Events.PluginAction.Add:
+                case PlatformCommon.Events.PluginAction.Add:
                     {
                         AddContentControl(args.PluginObject);
                         break;

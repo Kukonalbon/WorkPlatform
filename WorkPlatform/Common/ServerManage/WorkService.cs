@@ -7,7 +7,7 @@ using Sodao.FastSocket.Server;
 using Sodao.FastSocket.Server.Command;
 using Sodao.FastSocket.SocketBase;
 using Jisons;
-using WorkCommon.Message;
+using PlatformCommon.Message;
 
 namespace ServerManage
 {
@@ -75,11 +75,6 @@ namespace ServerManage
         public override void OnConnected(IConnection connection)
         {
             base.OnConnected(connection);
-        }
-
-        void connection_SendCallback(IConnection connection, SendCallbackEventArgs e)
-        {
-
         }
 
         /// <summary>

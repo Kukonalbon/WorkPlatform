@@ -5,8 +5,8 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.Prism.Events;
-using WorkCommon.Plugin;
-using WorkCommon.ViewModel;
+using PlatformCommon.Plugin;
+using PlatformCommon.ViewModel;
 
 namespace Modules.MainModule
 {

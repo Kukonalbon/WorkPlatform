@@ -35,7 +35,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\Debug\</OutputPath>
+    <OutputPath>..\..\..\Bin\Client\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -52,25 +52,21 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.WPF.Controls, Version=7.5.0.6, Culture=neutral, PublicKeyToken=65042117d0a83cbc, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.WPF.Metro, Version=7.5.0.6, Culture=neutral, PublicKeyToken=335804e47774a7d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Administrator\Desktop\DevComponents.WPF.Metro.dll</HintPath>
+      <HintPath>..\..\..\PlatformLib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism">
-      <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.dll</HintPath>
+      <HintPath>..\..\..\PlatformLib\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Interactivity">
-      <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+      <HintPath>..\..\..\PlatformLib\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.MefExtensions">
-      <HintPath>..\..\..\PrismLib\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+      <HintPath>..\..\..\PlatformLib\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\..\PrismLib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\..\PlatformLib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -133,35 +129,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Themes\BureauBlack.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\BureauBlue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Themes\ExpressionDark.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\ExpressionLight.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\ShinyBlue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\ShinyRed.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\WhistlerBlue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -175,9 +147,9 @@
       <Project>{fd27de89-d16f-4b28-84b3-e5e2eeae0636}</Project>
       <Name>CommonHelper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\WorkCommon\WorkCommon.csproj">
+    <ProjectReference Include="..\..\Common\PlatformCommon\PlatformCommon.csproj">
       <Project>{f68df23b-f839-4800-a674-67f338d1610d}</Project>
-      <Name>WorkCommon</Name>
+      <Name>PlatformCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Datas\BusinessFacade\Project.BusinessFacade.csproj">
       <Project>{8b981f9c-9deb-4636-b14f-db17300101b8}</Project>
@@ -195,10 +167,6 @@
       <Project>{f6a755fe-79cc-4f45-bdc7-8655abb6f41d}</Project>
       <Name>Project.DataEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\FrameworkLib\ControlLib\ControlLib.csproj">
-      <Project>{cbc9a612-1201-4233-86b1-10c66e9f9edf}</Project>
-      <Name>ControlLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\FrameworkLib\FastSocket.Client\FastSocket.Client.csproj">
       <Project>{6684b382-4adb-4073-a6db-d1bad1621ae5}</Project>
       <Name>FastSocket.Client</Name>
@@ -211,29 +179,21 @@
       <Project>{df0db212-1ac3-4c6c-bc72-8a62166e4969}</Project>
       <Name>UdpSendFiles</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\BottomModule\BottomModule.csproj">
+    <ProjectReference Include="..\..\Modules\BottomModule\Modules.BottomModule.csproj">
       <Project>{f900b75e-c0d5-495b-ac96-604471f048cf}</Project>
-      <Name>BottomModule</Name>
+      <Name>Modules.BottomModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\ChatModule\ChatModule.csproj">
+    <ProjectReference Include="..\..\Modules\ChatModule\Modules.ChatModule.csproj">
       <Project>{2a715245-40ab-4a79-8efa-f11520177ca1}</Project>
-      <Name>ChatModule</Name>
+      <Name>Modules.ChatModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\LoginModule\LoginModule.csproj">
+    <ProjectReference Include="..\..\Modules\LoginModule\Modules.LoginModule.csproj">
       <Project>{2158d942-41e0-4cc7-896e-2382d1ab28f7}</Project>
-      <Name>LoginModule</Name>
+      <Name>Modules.LoginModule</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Modules\MainModule\MainModule.csproj">
+    <ProjectReference Include="..\..\Modules\MainModule\Modules.MainModule.csproj">
       <Project>{85a7b67c-ed24-4013-b5eb-7ce23ff4f731}</Project>
-      <Name>MainModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Plugins\ModuleManagementPlugin\ModuleManagementPlugin.csproj">
-      <Project>{f24ab598-4715-4ab8-bdf7-44d73cf843db}</Project>
-      <Name>ModuleManagementPlugin</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Plugins\NoteBookPlugin\NoteBookPlugin.csproj">
-      <Project>{aa1055f5-c0ca-4ead-a583-5464c5f7db5b}</Project>
-      <Name>NoteBookPlugin</Name>
+      <Name>Modules.MainModule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

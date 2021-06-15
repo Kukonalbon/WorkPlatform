@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Jisons;
 using UdpSendFiles;
-using WorkCommon.Message;
+using PlatformCommon.Message;
 
 namespace ClientManager.Controls
 {
